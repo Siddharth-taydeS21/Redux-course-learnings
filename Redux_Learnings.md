@@ -9,3 +9,9 @@
 6) `store.getState()` : reads the current state,
 7) `store.dispatch(action = {})` : this method by createStore(), is actually the state updater. it receives an action object which contains the type of state update; for.ex increment/decrement in state or anything else.
 8) `store.subscribe(listener)` : It receives a callback function which can work like an event listener. This callback function runs every time when we use the `store.dispatch` method. 
+
+✅ episode 2 : Introduction & exploration of Redux Dev tools.
+
+✅ episode 3 : Creating my own Redux (createStore function of Redux)
+1) Implemented - full fledged store object. 
+in store object implemented - getState() method, dispatch(action) method, subscribe(listener) method, unsubscribe() method.
