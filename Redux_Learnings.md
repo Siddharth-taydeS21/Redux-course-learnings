@@ -19,3 +19,7 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 ✅ episode 4 - 
 1) Managed complex state using Redux reducer pattern. handled different cases of action.
 2) created a simple state object for an e-com store & handled different action cases of state updating.
+
+✅ episode 5 - 
+1) Learned about combine reducers : instead of making one reducer handler all kind of actions we can make separate reducers for handling just one category of actions using the `combineReducers()` method of Redux. 
+2) made changes in existing project to utilize combineReducers() and it's functionality.
