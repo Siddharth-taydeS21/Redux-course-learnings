@@ -1,9 +1,25 @@
-import { combineReducers, createStore } from "redux";
-import cartReducer, { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_ITEM_DECREASE_QUANTITY, CART_ITEM_INCREASE_QUANTITY } from "./cartReducer";
-import wishListReducer, { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from "./wishListReducer";
+import {
+    combineReducers,
+    createStore
+} from "redux";
+
+import cartReducer, {
+    addCartItem,
+    removeCartItem,
+    CartItemQuantityIncrease,
+    CartItemQuantityDecrease
+} from "./cartReducer";
+
+import wishListReducer, {
+    addWishListItem,
+    removeWishListItem,
+    WISHLIST_ADD_ITEM,
+    WISHLIST_REMOVE_ITEM
+} from "./wishListReducer";
+
 import productsReducer from "./productsReducer";
 import myCombineReducers from "./combineReducers";
- 
+
 // const state = {
 //     allProducts: productsList,
 //     cartList: [],
@@ -11,18 +27,18 @@ import myCombineReducers from "./combineReducers";
 // }
 
 //============================ REDUCER LOGIC WITH COMBINE REDUCER ============================//
-// const reducer = combineReducers({
-//     allProducts: productsReducer,
-//     cartList: cartReducer,
-//     wishList: wishListReducer,
-// })
-
-//============================ REDUCER LOGIC WITH MY OWN COMBINE REDUCER ============================//
-const reducer = myCombineReducers({
+const reducer = combineReducers({
     allProducts: productsReducer,
     cartList: cartReducer,
     wishList: wishListReducer,
 })
+
+//============================ REDUCER LOGIC WITH MY OWN COMBINE REDUCER ============================//
+// const reducer = myCombineReducers({
+//     allProducts: productsReducer,
+//     cartList: cartReducer,
+//     wishList: wishListReducer,
+// })
 
 //============================ REDUCER LOGIC WITH ONE REDUCER ============================//
 
@@ -66,12 +82,12 @@ const reducer = myCombineReducers({
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__?.());
 
-store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 12, productQuantity: 1 } })
-store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 6, productQuantity: 1 } })
-store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 9, productQuantity: 1 } })
-store.dispatch({ type: CART_ITEM_INCREASE_QUANTITY, payload: { productId: 9 } })
-store.dispatch({ type: WISHLIST_ADD_ITEM, payload: { productId: 9 } })
-store.dispatch({ type: WISHLIST_REMOVE_ITEM, payload: { productId: 9 } })
-store.dispatch({ type: CART_ITEM_DECREASE_QUANTITY, payload: { productId: 6 } })
-store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 17, productQuantity: 1 } })
-store.dispatch({ type: CART_REMOVE_ITEM, payload: { productId: 12 } })
+store.dispatch(addCartItem(12))
+store.dispatch(addCartItem(6))
+store.dispatch(addCartItem(9))
+store.dispatch(CartItemQuantityIncrease(9))
+store.dispatch(addWishListItem(9))
+store.dispatch(removeWishListItem(9))
+store.dispatch(CartItemQuantityDecrease(6))
+store.dispatch(addCartItem(17, 3))
+store.dispatch(removeCartItem(12))
