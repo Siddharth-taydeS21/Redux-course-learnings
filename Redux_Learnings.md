@@ -15,3 +15,7 @@
 ✅ episode 3 : Creating my own Redux (createStore function of Redux)
 1) Implemented - full fledged store object. 
 in store object implemented - getState() method, dispatch(action) method, subscribe(listener) method, unsubscribe() method.
+
+✅ episode 4 - 
+1) Managed complex state using Redux reducer pattern. handled different cases of action.
+2) created a simple state object for an e-com store & handled different action cases of state updating.
