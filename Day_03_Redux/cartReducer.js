@@ -4,7 +4,7 @@ export const CART_ITEM_INCREASE_QUANTITY = 'cart/increaseQuantityOfItem';
 export const CART_ITEM_DECREASE_QUANTITY = 'cart/decreaseQuantityOfItem';
 
 export default function cartReducer(state = [], action) {
-    switch (action.type) {
+    switch (action?.type) {
         case CART_ADD_ITEM:
             return [...state, action.payload]
 

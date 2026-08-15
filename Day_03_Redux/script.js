@@ -2,6 +2,7 @@ import { combineReducers, createStore } from "redux";
 import cartReducer, { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_ITEM_DECREASE_QUANTITY, CART_ITEM_INCREASE_QUANTITY } from "./cartReducer";
 import wishListReducer, { WISHLIST_ADD_ITEM, WISHLIST_REMOVE_ITEM } from "./wishListReducer";
 import productsReducer from "./productsReducer";
+import myCombineReducers from "./combineReducers";
  
 // const state = {
 //     allProducts: productsList,
@@ -10,7 +11,14 @@ import productsReducer from "./productsReducer";
 // }
 
 //============================ REDUCER LOGIC WITH COMBINE REDUCER ============================//
-const reducer = combineReducers({
+// const reducer = combineReducers({
+//     allProducts: productsReducer,
+//     cartList: cartReducer,
+//     wishList: wishListReducer,
+// })
+
+//============================ REDUCER LOGIC WITH MY OWN COMBINE REDUCER ============================//
+const reducer = myCombineReducers({
     allProducts: productsReducer,
     cartList: cartReducer,
     wishList: wishListReducer,
