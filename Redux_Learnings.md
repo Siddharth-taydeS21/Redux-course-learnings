@@ -23,3 +23,13 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 ✅ episode 5 - 
 1) Learned about combine reducers : instead of making one reducer handler all kind of actions we can make separate reducers for handling just one category of actions using the `combineReducers()` method of Redux. 
 2) made changes in existing project to utilize combineReducers() and it's functionality.
+
+✅ episode 6 - implemented my own `combineReducers()` method using simple JavaScript
+
+✅ episode 7 - 
+1) Learned about action creators : action creators are simple functions who returns reusable action objects for dispatch calls. this considered as a good practice while working with Redux state management. 
+
+✅ episode 8 - 
+1) Learned about how to connect the Redux library with our React application.
+2) Learned about the `<Provider></Provider>` component and it's state prop = `state={**Redux-state-store**}` and the `useSelector()` hook provided by React-Redux.
+3) Build a quick and working prototype project using React-Redux's <Provider /> component, `state` prop, and its `useSelector()` hook.
