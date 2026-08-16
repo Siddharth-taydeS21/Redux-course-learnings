@@ -33,3 +33,7 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 1) Learned about how to connect the Redux library with our React application.
 2) Learned about the `<Provider></Provider>` component and it's state prop = `state={**Redux-state-store**}` and the `useSelector()` hook provided by React-Redux.
 3) Build a quick and working prototype project using React-Redux's <Provider /> component, `state` prop, and its `useSelector()` hook.
+
+✅ episode 9 - 
+1) Learn about `useDispatch()` hook of React-Redux.
+2) Build a simple multi-page website which has e-com product page, add to cart functionality with remove products, increase and decrease their quantity feature. The website also has add to wish list functionality for each product. In the wish list section, we can remove the products using the remove button. 
