@@ -43,3 +43,8 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 2) Implementing React-Redux's <Provider /> component, `state` prop, `useSelector()` & `useDispatch()` hooks using React's context API.
 
 ✅ episode 11 - In redux toolkit, Slices represents Reducers logic, there Action types, action creators as a single bundled code file, or Feature of our application.
+
+✅ episode 12 - 
+1) Learned about how to write mutable style code For our Reducer function logic using `produce()` method of  Immer.js 
+2) the produce method takes the original state, and gives us a instance of the state. on this instance of state we can use push(), 
+pop() like operations to write mutable style state updating code so it can become less, clean & readable.

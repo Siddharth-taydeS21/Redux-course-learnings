@@ -4,6 +4,8 @@ const CART_REMOVE_ITEM = 'cart/removeItem';
 const CART_ITEM_INCREASE_QUANTITY = 'cart/increaseQuantityOfItem';
 const CART_ITEM_DECREASE_QUANTITY = 'cart/decreaseQuantityOfItem';
 
+import { produce } from 'immer'
+
 // ACTION CREATORS
 export function addCartItem(productData) {
     return {
@@ -43,39 +45,33 @@ export function CartItemQuantityDecrease(productId) {
 }
 
 // REDUCER
-export default function cartReducer(state = [], action) {
-    switch (action?.type) {
-        case CART_ADD_ITEM:
-            const exitingItem = state.find(cartItem => cartItem.productId === action.payload.productId)
-            if (exitingItem) {
-                return state.map(item => {
-                    if (item.productId === exitingItem.productId) {
-                        return { ...item, productQuantity: item.productQuantity + 1 }
-                    }
-                    return item
-                })
-            }
-            return [...state, action.payload]
-
-        case CART_REMOVE_ITEM:
-            return state.filter((cartListitem) => cartListitem.productId !== action.payload.productId)
-
-        case CART_ITEM_INCREASE_QUANTITY:
-            return state.map((cartListitem) => {
-                if (cartListitem.productId === action.payload.productId) {
-                    return { ...cartListitem, productQuantity: cartListitem.productQuantity + 1 }
+export default function cartReducer(OriginalState = [], action) {
+    return produce(OriginalState, (state) => {
+        const exitingItemIndex = state.findIndex(cartItem => cartItem.productId === action.payload.productId)
+        const existingItem = state[exitingItemIndex];
+        switch (action?.type) {
+            case CART_ADD_ITEM:
+                if (existingItem) {
+                    existingItem.productQuantity += 1;
+                    break
                 }
-                return cartListitem;
-            })
+                state.push(action.payload)
+                break
 
-        case CART_ITEM_DECREASE_QUANTITY:
-            return state.map((cartListitem) => {
-                if (cartListitem.productId === action.payload.productId) {
-                    return { ...cartListitem, productQuantity: cartListitem.productQuantity - 1 }
+            case CART_REMOVE_ITEM:
+                state.splice(exitingItemIndex, 1)
+                break
+
+            case CART_ITEM_INCREASE_QUANTITY:
+                state[exitingItemIndex].productQuantity += 1;
+                break
+
+            case CART_ITEM_DECREASE_QUANTITY:
+                state[exitingItemIndex].productQuantity -= 1;
+                if (state[exitingItemIndex].productQuantity === 0) {
+                    state.splice(exitingItemIndex, 1)
                 }
-                return cartListitem;
-            }).filter((item) => item.productQuantity >= 1)
-        default:
-            return state;
-    }
+        }
+        return state;
+    })
 }
