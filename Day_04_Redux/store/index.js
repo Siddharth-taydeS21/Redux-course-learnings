@@ -8,16 +8,16 @@ import cartReducer, {
     removeCartItem,
     CartItemQuantityIncrease,
     CartItemQuantityDecrease
-} from "./cartReducer";
+} from "./slices/cartSlice";
 
 import wishListReducer, {
     addWishListItem,
     removeWishListItem,
     WISHLIST_ADD_ITEM,
     WISHLIST_REMOVE_ITEM
-} from "./wishListReducer";
+} from "./slices/wishListSlice";
 
-import productsReducer from "./productsReducer";
+import productsReducer from "./slices/productsSlice";
 import myCombineReducers from "./combineReducers";
 
 //============================ REDUCER LOGIC WITH COMBINE REDUCER ============================//

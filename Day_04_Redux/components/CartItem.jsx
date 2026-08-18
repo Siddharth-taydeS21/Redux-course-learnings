@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { CartItemQuantityDecrease, CartItemQuantityIncrease } from "../store/cartReducer";
+import { CartItemQuantityDecrease, CartItemQuantityIncrease } from "../store/slices/cartSlice";
 
 export default function CartItem({ productId, title, rating, price, imageUrl, quantity }) {
   // console.log(imageUrl)

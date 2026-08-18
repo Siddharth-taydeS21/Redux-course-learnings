@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
-import { addCartItem } from "../store/cartReducer";
-import { addWishListItem } from "../store/wishListReducer";
+import { addCartItem } from "../store/slices/cartSlice";
+import { addWishListItem } from "../store/slices/wishListSlice";
 
 export default function ProductCard({ productId, title, rating, price, imageUrl }) {
     const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { removeWishListItem } from "../store/wishListReducer";
+import { removeWishListItem } from "../store/slices/wishListSlice";
 
 export default function WishListItem({ productId, imageUrl, title, rating, price }) {
     const dispatch = useDispatch();

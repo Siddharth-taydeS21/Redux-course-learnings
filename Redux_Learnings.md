@@ -37,3 +37,9 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 ✅ episode 9 - 
 1) Learn about `useDispatch()` hook of React-Redux.
 2) Build a simple multi-page website which has e-com product page, add to cart functionality with remove products, increase and decrease their quantity feature. The website also has add to wish list functionality for each product. In the wish list section, we can remove the products using the remove button. 
+
+✅ episode 10 -
+1) Implementing React-Redux simple library code form scratch.
+2) Implementing React-Redux's <Provider /> component, `state` prop, `useSelector()` & `useDispatch()` hooks using React's context API.
+
+✅ episode 11 - In redux toolkit, Slices represents Reducers logic, there Action types, action creators as a single bundled code file, or Feature of our application.

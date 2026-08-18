@@ -1,6 +1,6 @@
-import cartReducer from "./cartReducer";
-import productsReducer from "./productsReducer";
-import wishListReducer from "./wishListReducer";
+import cartReducer from "./slices/cartSlice";
+import productsReducer from "./slices/productsSlice";
+import wishListReducer from "./slices/wishListSlice";
 
 //============================ COMBINE REDUCER RAW IMPLEMENTATION WITH SIMPLE JS ============================//
 export default function myCombineReducers(reducers) {
