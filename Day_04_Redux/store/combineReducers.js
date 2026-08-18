@@ -1,13 +1,13 @@
-import cartReducer from "./slices/cartSlice";
+import { cartReducer } from "./slices/cartSlice";
 import productsReducer from "./slices/productsSlice";
-import wishListReducer from "./slices/wishListSlice";
+import { wishListReducer } from "./slices/wishListSlice";
 
 //============================ COMBINE REDUCER RAW IMPLEMENTATION WITH SIMPLE JS ============================//
 export default function myCombineReducers(reducers) {
     // it should return a function, and the function should return a state object after calling it
     const reducerPairs = Object.entries(reducers)
 
-    return function(state = {}, action){ // the one reducer function, createStore method will use this function for handling any dispatch call
+    return function (state = {}, action) { // the one reducer function, createStore method will use this function for handling any dispatch call
         const newState = {}
 
         reducerPairs.forEach(([key, value]) => {

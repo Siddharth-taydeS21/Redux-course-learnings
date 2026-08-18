@@ -3,18 +3,18 @@ import {
     createStore
 } from "redux";
 
-import cartReducer, {
+import {
+    cartReducer,
     addCartItem,
     removeCartItem,
     CartItemQuantityIncrease,
     CartItemQuantityDecrease
 } from "./slices/cartSlice";
 
-import wishListReducer, {
+import {
+    wishListReducer,
     addWishListItem,
     removeWishListItem,
-    WISHLIST_ADD_ITEM,
-    WISHLIST_REMOVE_ITEM
 } from "./slices/wishListSlice";
 
 import productsReducer from "./slices/productsSlice";

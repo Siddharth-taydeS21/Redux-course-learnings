@@ -45,6 +45,11 @@ in store object implemented - getState() method, dispatch(action) method, subscr
 ✅ episode 11 - In redux toolkit, Slices represents Reducers logic, there Action types, action creators as a single bundled code file, or Feature of our application.
 
 ✅ episode 12 - 
-1) Learned about how to write mutable style code For our Reducer function logic using `produce()` method of  Immer.js 
+1) Learned about how to write mutable style code For our Reducer function logic using `produce()` method of  `Immer.js` 
 2) the produce method takes the original state, and gives us a instance of the state. on this instance of state we can use push(), 
 pop() like operations to write mutable style state updating code so it can become less, clean & readable.
+
+✅ episode 13 - 
+1) Learned about RTK Redux Toolkit and it's `createSlice()` method. 
+2) the createSlice() method eliminates the need of manually writing the action types, action creators and switch cases for our reducers. it generates the action types & action creators & handles coordination between the action creators and case reducers under the hood.
+3) it integrates `Immer.js` behind the scene and it allows us to write mutable style code, so our code can become less complicated and more readable.

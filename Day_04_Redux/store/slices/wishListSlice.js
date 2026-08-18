@@ -1,39 +1,24 @@
-// ACTIONS
-const WISHLIST_ADD_ITEM = 'wishList/addItem';
-const WISHLIST_REMOVE_ITEM = 'wishList/removeItem';
+import { createSlice } from "@reduxjs/toolkit";
 
-// ACTION CREATORS
-export function addWishListItem(productData) {
-    return {
-        type: WISHLIST_ADD_ITEM,
-        payload: productData
-    }
-}
-
-export function removeWishListItem(productId) {
-    return {
-        type: WISHLIST_REMOVE_ITEM,
-        payload: {
-            productId
-        }
-    }
-}
-
-// REDUCER
-export default function wishListReducer(state = [], action) {
-    switch (action?.type) {
-        case WISHLIST_ADD_ITEM:
-            const existingItem = state.find(wishListItem => wishListItem.productId === action.payload.productId)
-            if (existingItem) {
-                const newState = state.filter(wishListItem => {
-                    return wishListItem.productId !== existingItem.productId
-                })
-                return [...newState, {...existingItem}]
+const slice = createSlice({
+    name: 'wishList',
+    initialState: [],
+    reducers: {
+        addWishListItem(state, action) {
+            console.log(action)
+            const existingItemIndex = state.findIndex(wishListItem => wishListItem.productId === action.payload.productId)
+            if (existingItemIndex !== -1) {
+                return state;
+            } else {
+                state.push(action.payload)
+                return state;
             }
-            return [...state, action.payload]
-        case WISHLIST_REMOVE_ITEM:
-            return state.filter((wishListitem) => wishListitem.productId !== action.payload.productId)
-        default:
-            return state;
+        },
+        removeWishListItem(state, action) {
+            return state.filter((wishListitem) => wishListitem.productId !== action.payload)
+        },
     }
-}
+})
+
+export const { addWishListItem, removeWishListItem } = slice.actions;
+export const wishListReducer = slice.reducer;
