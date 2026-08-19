@@ -53,3 +53,7 @@ pop() like operations to write mutable style state updating code so it can becom
 1) Learned about RTK Redux Toolkit and it's `createSlice()` method. 
 2) the createSlice() method eliminates the need of manually writing the action types, action creators and switch cases for our reducers. it generates the action types & action creators & handles coordination between the action creators and case reducers under the hood.
 3) it integrates `Immer.js` behind the scene and it allows us to write mutable style code, so our code can become less complicated and more readable.
+
+✅ episode 14 - 
+1) Created my own Redux-toolkit form scratch.
+2) Implemented the `createSlice` method by Redux-Toolkit using simple JavaScript. The `createSlice` function returns action creators, a reducer and under the hood handles the case reducers logic.
