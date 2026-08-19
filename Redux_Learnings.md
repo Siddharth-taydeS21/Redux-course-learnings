@@ -57,3 +57,7 @@ pop() like operations to write mutable style state updating code so it can becom
 ✅ episode 14 - 
 1) Created my own Redux-toolkit form scratch.
 2) Implemented the `createSlice` method by Redux-Toolkit using simple JavaScript. The `createSlice` function returns action creators, a reducer and under the hood handles the case reducers logic.
+
+✅ episode 15 - 
+1) Learned about middlewares in Redux toolkit. 
+2) Middlewares are `Curried` functions, which is access to store, Next : which is dispatch handler, and action, which is the actual action which can be dispatched in middleware function.

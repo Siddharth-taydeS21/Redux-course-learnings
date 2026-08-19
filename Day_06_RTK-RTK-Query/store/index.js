@@ -19,15 +19,20 @@ import {
 
 import productsReducer from "./slices/productsSlice";
 import myCombineReducers from "./combineReducers";
+import { configureStore } from "@reduxjs/toolkit";
+import { logger } from "../middlewares/logger";
 
 //============================ REDUCER LOGIC WITH COMBINE REDUCER ============================//
-const reducer = combineReducers({
-    allProducts: productsReducer,
-    cartList: cartReducer,
-    wishList: wishListReducer,
-})
+export const store = configureStore({
+    reducer: {
+        allProducts: productsReducer,
+        cartList: cartReducer,
+        wishList: wishListReducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(logger),
+});
 
-export const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__?.());
 
 // store.dispatch(addCartItem(12))
 // store.dispatch(addCartItem(6))
