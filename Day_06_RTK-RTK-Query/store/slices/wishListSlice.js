@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { myCreateSlice } from '../../myRtk';
 
-const slice = myCreateSlice({
+const slice = createSlice({
     name: 'wishList',
     initialState: [],
     reducers: {

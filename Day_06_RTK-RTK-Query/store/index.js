@@ -29,8 +29,8 @@ export const store = configureStore({
         cartList: cartReducer,
         wishList: wishListReducer,
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(logger),
+    // middleware: (getDefaultMiddleware) =>
+    //     getDefaultMiddleware().concat(logger),
 });
 
 

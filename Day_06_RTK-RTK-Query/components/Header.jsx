@@ -1,10 +1,26 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { fetchCartData, handleCartError, setCartLoading } from '../store/slices/cartSlice'
 
 export default function Header() {
-    const cartItems = useSelector(state => state.cartList)
+    const cartItems = useSelector(state => state.cartList.list)
     const wishListItems = useSelector(state => state.wishList)
+
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(setCartLoading())
+    //     fetch('https://fakestoreapi.com/carts/1')
+    //       .then(res => res.json())
+    //       .then(data => {
+    //         // if(cartItems.length)
+    //         dispatch(fetchCartData(data.products))
+    //       }).catch((err) => {
+    //         console.log(err);
+    //         dispatch(handleCartError())
+    //       })
+    //   }, [])
+    
     return (
         <header>
             <div className="header-contents">
@@ -18,7 +34,7 @@ export default function Header() {
                     </Link>
                     <Link className="cart-icon" to="/cart">
                         <i className="ri-shopping-cart-fill"></i>
-                        <i className="cart-items-count">{cartItems.reduce((acc, curItem) => acc + curItem.productQuantity, 0)}</i>
+                        <i className="cart-items-count">{cartItems.reduce((acc, curItem) => acc + curItem.quantity, 0)}</i>
                     </Link>
                 </div>
             </div>

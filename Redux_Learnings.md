@@ -61,3 +61,11 @@ pop() like operations to write mutable style state updating code so it can becom
 ✅ episode 15 - 
 1) Learned about middlewares in Redux toolkit. 
 2) Middlewares are `Curried` functions, which is access to store, Next : which is dispatch handler, and action, which is the actual action which can be dispatched in middleware function.
+
+✅ episode 16 - 
+1) Learned about how to make API calls in Redux.
+2) There are 4 possible ways to make API calls in Redux:
+1. Custom API middleware
+2. Thunk
+3. Using RTK query
+4. Using Redux Saga

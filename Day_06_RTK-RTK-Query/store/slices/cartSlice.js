@@ -1,47 +1,66 @@
-import { myCreateSlice } from '../../myRtk';
+import { createSlice } from "@reduxjs/toolkit";
 
 const findItemIndex = (state, action) =>
-    state.findIndex(cartItem => cartItem.productId === action.payload.productId);
+    state.list.findIndex(cartItem => cartItem.productId === action.payload.productId);
 
 
-const mySlice = myCreateSlice({
+const slice = createSlice({
     name: 'cart',
-    initialState: [],
+    initialState: {
+        list: [],
+        loading: false,
+        error: ''
+    },
     reducers: {
+        
+        setCartLoading(state){
+            state.loading = true;
+        },
+        fetchCartData(state, action){
+            // debugger
+            state.loading = false;
+            state.list = action.payload
+        },
+        handleCartError(state, action){
+            state.loading = false;
+            state.error = action.payload || 'Something went wrong!';
+        },
         addCartItem(state, action) {
             const exitingItemIndex = findItemIndex(state, action);
-            const existingItem = state[exitingItemIndex];
+            const existingItem = state.list[exitingItemIndex];
             if (existingItem) {
-                existingItem.productQuantity += 1;
+                existingItem.quantity += 1;
             } else {
-                state.push({ ...action.payload, productQuantity: 1 })
+                state.list.push({ ...action.payload, quantity: 1 })
             }
         },
         removeCartItem(state, action) {
             const exitingItemIndex = findItemIndex(state, action);
-            state.splice(exitingItemIndex, 1)
+            state.list.splice(exitingItemIndex, 1)
         },
         CartItemQuantityIncrease(state, action) {
             const exitingItemIndex = findItemIndex(state, action);
-            state[exitingItemIndex].productQuantity += 1;
+            state.list[exitingItemIndex].quantity += 1;
         },
         CartItemQuantityDecrease(state, action) {
             const exitingItemIndex = findItemIndex(state, action);
-            state[exitingItemIndex].productQuantity -= 1;
-            if (state[exitingItemIndex].productQuantity === 0) {
-                state.splice(exitingItemIndex, 1)
+            state.list[exitingItemIndex].quantity -= 1;
+            if (state.list[exitingItemIndex].quantity === 0) {
+                state.list.splice(exitingItemIndex, 1)
             }
         }
     }
 })
 
-// console.log(mySlice)
 
-export const cartReducer = mySlice.reducer;
+export const cartReducer = slice.reducer;
 
 export const {
+    setCartLoading,
+    fetchCartData,
+    handleCartError,
     addCartItem,
     removeCartItem,
     CartItemQuantityIncrease,
     CartItemQuantityDecrease,
-} = mySlice.actions;
+} = slice.actions;
