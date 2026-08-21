@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import CartItem from '../components/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCartData, handleCartError, setCartLoading } from '../store/slices/cartSlice'
-import { handleError, setLoading, updateProductList } from '../store/slices/productsSlice'
+import { fetchCartData, handleCartError, selectCartError, selectCartItems, selectCartLoading, setCartLoading } from '../store/slices/cartSlice'
+import { handleError, selectAllProducts, setLoading, updateProductList } from '../store/slices/productsSlice'
 
 export default function Cart() {
-  const cartItems = useSelector(state => state.cartList.list)
-  const allProducts = useSelector(state => state.allProducts.list)
-  const isLoading = useSelector(state => state.cartList.loading)
-  const error = useSelector(state => state.cartList.error)
+  const cartItems = useSelector(selectCartItems)
+  const allProducts = useSelector(selectAllProducts)
+  const isLoading = useSelector(selectCartLoading)
+  const error = useSelector(selectCartError)
 
   const dispatch = useDispatch()
   useEffect(() => {

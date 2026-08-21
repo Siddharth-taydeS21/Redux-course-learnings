@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchCartData, handleCartError, setCartLoading } from '../store/slices/cartSlice'
+import { fetchCartData, handleCartError, selectCartItems, setCartLoading } from '../store/slices/cartSlice'
+import { selectWishListProducts } from '../store/slices/wishListSlice'
 
 export default function Header() {
-    const cartItems = useSelector(state => state.cartList.list)
-    const wishListItems = useSelector(state => state.wishList)
+    const cartItems = useSelector(selectCartItems)
+    const wishListItems = useSelector(selectWishListProducts)
 
     // const dispatch = useDispatch()
     // useEffect(() => {

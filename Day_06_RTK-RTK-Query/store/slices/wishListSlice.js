@@ -21,5 +21,8 @@ const slice = createSlice({
     }
 })
 
+// Selectors
+export const selectWishListProducts = (state) => (state.wishList)
+
 export const { addWishListItem, removeWishListItem } = slice.actions;
 export const wishListReducer = slice.reducer;

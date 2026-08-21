@@ -25,5 +25,10 @@ const slice = createSlice({
     }
 })
 
+// Selectors
+export const selectAllProducts = (state) => (state.allProducts.list)
+export const selectAllProductsLoading = (state) => (state.allProducts.loading)
+export const selectAllProductsError = (state) => (state.allProducts.error)
+
 export default slice.reducer
 export const {updateProductList, setLoading, handleError} = slice.actions;

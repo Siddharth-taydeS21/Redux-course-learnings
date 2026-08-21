@@ -69,3 +69,9 @@ pop() like operations to write mutable style state updating code so it can becom
 2. Thunk
 3. Using RTK query
 4. Using Redux Saga
+
+3) Implemented API calls in our Cart-Wishlist project using the userEffect() and hook standard fetch calls : (the un-recommended way, Custom API data fetching middlewares should be used here.)
+
+✅ episode 17 - Learned about `Selectors` in Redux.
+1) Selectors are plain Javascript functions or arrow functions which are used to get data from the Redux store. They can be used to extract, filter, or compute specific pieces of data from our Redux store.
+2) Implemented selectors in our cart-wishlist project.

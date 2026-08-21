@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductCard from '../components/ProductCard'
-import { handleError, setLoading, updateProductList } from '../store/slices/productsSlice';
+import { handleError, selectAllProducts, selectAllProductsError, selectAllProductsLoading, setLoading, updateProductList } from '../store/slices/productsSlice';
 import { fetchCartData, handleCartError, setCartLoading } from '../store/slices/cartSlice';
 
 export default function Home() {
-  const productsList = useSelector(state => state.allProducts.list)
-  const isLoading = useSelector(state => state.allProducts.loading);
-  const isError = useSelector(state => state.allProducts.error);
+  const productsList = useSelector(selectAllProducts)
+  const isLoading = useSelector(selectAllProductsLoading);
+  const isError = useSelector(selectAllProductsError);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setLoading())

@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux"
 import WishListItem from "../components/WishListItem"
+import { selectWishListProducts } from "../store/slices/wishListSlice"
 
 export default function WishList() {
-    const wishListItems = useSelector(state => state.wishList)
+    const wishListItems = useSelector(selectWishListProducts)
     return (
         <div className="wishList-container">
             <h2>Items in Your WishList</h2>

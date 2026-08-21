@@ -55,6 +55,11 @@ const slice = createSlice({
 
 export const cartReducer = slice.reducer;
 
+// Selectors
+export const selectCartItems = (state) => (state.cartList.list)
+export const selectCartLoading = (state) => (state.cartList.loading)
+export const selectCartError = (state) => (state.cartList.error)
+
 export const {
     setCartLoading,
     fetchCartData,
