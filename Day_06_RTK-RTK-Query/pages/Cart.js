@@ -3,6 +3,7 @@ import CartItem from '../components/CartItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCartData, handleCartError, selectCartError, selectCartItems, selectCartLoading, setCartLoading } from '../store/slices/cartSlice'
 import { handleError, selectAllProducts, setLoading, updateProductList } from '../store/slices/productsSlice'
+import { fetchData } from '../middlewares/apiMiddleware'
 
 export default function Cart() {
   const cartItems = useSelector(selectCartItems)
@@ -12,25 +13,21 @@ export default function Cart() {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(setLoading())
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(data => {
-        dispatch(updateProductList(data))
-      }).catch((err) => {
-        console.log(err);
-        dispatch(handleError())
-      })
 
-    dispatch(setCartLoading())
-    fetch('https://fakestoreapi.com/carts/1')
-      .then(res => res.json())
-      .then(data => {
-        dispatch(fetchCartData(data.products))
-      }).catch((err) => {
-        console.log(err);
-        dispatch(handleCartError())
-      })
+    dispatch(fetchData({
+      url_endPoint: 'products',
+      onStart: setLoading.type,
+      onSuccess: updateProductList.type,
+      onError: handleError.type,
+    }))
+
+    dispatch(fetchData({
+      url_endPoint: 'carts/1',
+      onStart: setCartLoading.type,
+      onSuccess: fetchCartData.type,
+      onError: handleCartError.type,
+    }))
+
   }, [])
 
   const newCartItems = cartItems.map(element => {

@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchCartData, handleCartError, selectCartItems, setCartLoading } from '../store/slices/cartSlice'
+import { selectCartItems } from '../store/slices/cartSlice'
 import { selectWishListProducts } from '../store/slices/wishListSlice'
 
 export default function Header() {
     const cartItems = useSelector(selectCartItems)
     const wishListItems = useSelector(selectWishListProducts)
-
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(setCartLoading())
-    //     fetch('https://fakestoreapi.com/carts/1')
-    //       .then(res => res.json())
-    //       .then(data => {
-    //         // if(cartItems.length)
-    //         dispatch(fetchCartData(data.products))
-    //       }).catch((err) => {
-    //         console.log(err);
-    //         dispatch(handleCartError())
-    //       })
-    //   }, [])
     
     return (
         <header>

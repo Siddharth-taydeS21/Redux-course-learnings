@@ -1,26 +1,8 @@
-import {
-    combineReducers,
-    createStore
-} from "redux";
-
-import {
-    cartReducer,
-    addCartItem,
-    removeCartItem,
-    CartItemQuantityIncrease,
-    CartItemQuantityDecrease
-} from "./slices/cartSlice";
-
-import {
-    wishListReducer,
-    addWishListItem,
-    removeWishListItem,
-} from "./slices/wishListSlice";
-
+import { cartReducer } from "./slices/cartSlice";
+import { wishListReducer } from "./slices/wishListSlice";
 import productsReducer from "./slices/productsSlice";
-import myCombineReducers from "./combineReducers";
 import { configureStore } from "@reduxjs/toolkit";
-import { logger } from "../middlewares/logger";
+import { apiMiddleware } from "../middlewares/apiMiddleware";
 
 //============================ REDUCER LOGIC WITH COMBINE REDUCER ============================//
 export const store = configureStore({
@@ -29,17 +11,6 @@ export const store = configureStore({
         cartList: cartReducer,
         wishList: wishListReducer,
     },
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware().concat(logger),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiMiddleware),
 });
-
-
-// store.dispatch(addCartItem(12))
-// store.dispatch(addCartItem(6))
-// store.dispatch(addCartItem(9))
-// store.dispatch(CartItemQuantityIncrease(9))
-// store.dispatch(addWishListItem(9))
-// store.dispatch(removeWishListItem(9))
-// store.dispatch(CartItemQuantityDecrease(6))
-// store.dispatch(addCartItem(17, 3))
-// store.dispatch(removeCartItem(12))

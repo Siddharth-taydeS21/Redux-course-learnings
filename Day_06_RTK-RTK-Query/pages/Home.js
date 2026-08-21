@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductCard from '../components/ProductCard'
 import { handleError, selectAllProducts, selectAllProductsError, selectAllProductsLoading, setLoading, updateProductList } from '../store/slices/productsSlice';
-import { fetchCartData, handleCartError, setCartLoading } from '../store/slices/cartSlice';
+import { fetchData } from '../middlewares/apiMiddleware';
 
 export default function Home() {
   const productsList = useSelector(selectAllProducts)
@@ -10,17 +10,13 @@ export default function Home() {
   const isError = useSelector(selectAllProductsError);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setLoading())
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(data => {
-        dispatch(updateProductList(data))
-      }).catch((err) => {
-        console.log(err);
-        dispatch(handleError())
-      })
 
-    
+    dispatch(fetchData({
+      url_endPoint: 'products',
+      onStart: setLoading.type,
+      onSuccess: updateProductList.type,
+      onError: handleError.type,
+    }))
 
   }, [])
 
